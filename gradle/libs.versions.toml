@@ -7,7 +7,7 @@ junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.11.0"
-composeBom = "2025.10.01"
+composeBom = "2025.09.01"
 koin-core = "4.1.1"
 koin-annotations = "2.3.0"
 ktorfit = "2.6.4"
@@ -20,6 +20,9 @@ coil = "3.3.0"
 napier = "2.7.1"
 ktor = "3.3.1"
 coroutines = "1.10.2"
+pagingCompose = "3.4.0-alpha04"
+pagingRuntime = "3.3.6"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -72,6 +75,12 @@ navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-co
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
+# Pagination 3
+androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "pagingRuntime" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
+
+
 # Coil
 coil = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
 coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil" }
@@ -107,6 +116,7 @@ koin-compose = [
     "koin-android",
     "koin-compose",
     "koin-compose-viewmodel",
+    "koin-annotations"
 ]
 
 ktorfit = [
