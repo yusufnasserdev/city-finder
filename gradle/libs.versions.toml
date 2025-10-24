@@ -12,6 +12,9 @@ koin-core = "4.1.1"
 koin-annotations = "2.3.0"
 ktorfit = "2.6.4"
 navigationCompose = "2.9.1"
+ksp = "2.2.10-2.0.2"
+appcompat = "1.7.1"
+material = "1.13.0"
 
 
 [libraries]
@@ -49,6 +52,8 @@ ktorfit-flow = { module = "de.jensklingenberg.ktorfit:ktorfit-converters-flow", 
 
 # Navigation
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 
 [plugins]
@@ -56,4 +61,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
+android-library = { id = "com.android.library", version.ref = "agp" }
