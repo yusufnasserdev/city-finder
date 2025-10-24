@@ -1,8 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":presentation")
-
-
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
@@ -30,3 +27,4 @@ rootProject.name = "CityFinder"
 include(":app")
 include(":domain")
 include(":data")
+include(":presentation")

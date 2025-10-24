@@ -5,10 +5,12 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.jvm)
     alias(libs.plugins.ksp)
 }
+
 java {
     sourceCompatibility = AppConfig.Version.JVM
     targetCompatibility = AppConfig.Version.JVM
 }
+
 kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
@@ -16,10 +18,13 @@ kotlin {
 }
 
 ksp {
-    arg("KOIN_CONFIG_CHECK","true")
+    arg("KOIN_CONFIG_CHECK", "true")
 }
 
 dependencies {
     implementation(libs.koin.core)
-    api(libs.koin.annotations)
+    implementation(libs.koin.annotations)
+    ksp(libs.koin.ksp.compiler)
+
+    implementation(libs.kotlinx.coroutines.core)
 }
