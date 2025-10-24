@@ -1,5 +1,6 @@
 package dev.yunas.data.client
 
+import de.jensklingenberg.ktorfit.http.Url
 import dev.yunas.data.BuildConfig
 import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
@@ -11,6 +12,7 @@ import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.http.ContentType
+import io.ktor.http.URLProtocol
 import io.ktor.http.contentType
 import io.ktor.http.headers
 import io.ktor.serialization.kotlinx.json.json
@@ -27,7 +29,16 @@ class NetworkClient : KoinComponent {
     private fun configureBaseSettings(): HttpClient {
         return HttpClient {
             defaultRequest {
-                url(BASE_URL)
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = BASE_URL
+                }
+
+                headers {
+                    append("x-rapidapi-key", BuildConfig.API_KEY)
+                    append("x-rapidapi-host", BASE_URL)
+                }
+
                 contentType(ContentType.Application.Json)
             }
 
@@ -46,13 +57,6 @@ class NetworkClient : KoinComponent {
                     override fun log(message: String) {
                         Napier.d(message = "Http client: $message", tag = "HttpClient")
                     }
-                }
-            }
-
-            install(plugin = Auth) {
-                headers {
-                    append("x-rapidapi-key", BuildConfig.API_KEY)
-                    append("x-rapidapi-host", BASE_URL)
                 }
             }
 
