@@ -1,3 +1,5 @@
+import dev.yunas.buildsrc.AppConfig
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -10,13 +12,14 @@ kotlin {
 }
 
 android {
-    namespace = "dev.yunas.cityfinder"
-    compileSdk = 36
+    namespace = AppConfig.APPLICATION_ID
+    compileSdk = AppConfig.Version.COMPILE_SDK
+
 
     defaultConfig {
-        applicationId = "dev.yunas.cityfinder"
-        minSdk = 21
-        targetSdk = 36
+        applicationId = AppConfig.APPLICATION_ID
+        minSdk = AppConfig.Version.MIN_SDK
+        targetSdk = AppConfig.Version.TARGET_SDK
         versionCode = 1
         versionName = "1.0"
 
@@ -34,8 +37,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = AppConfig.Version.JVM
+        targetCompatibility = AppConfig.Version.JVM
     }
 
     buildFeatures {
