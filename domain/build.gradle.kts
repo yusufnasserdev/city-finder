@@ -1,0 +1,21 @@
+import dev.yunas.buildsrc.AppConfig
+
+plugins {
+    id("java-library")
+    alias(libs.plugins.jetbrains.kotlin.jvm)
+    alias(libs.plugins.ksp)
+}
+java {
+    sourceCompatibility = AppConfig.Version.JVM
+    targetCompatibility = AppConfig.Version.JVM
+}
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
+dependencies {
+    implementation(libs.koin.core)
+    api(libs.koin.annotations)
+}
