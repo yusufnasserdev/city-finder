@@ -1,6 +1,12 @@
+import dev.yunas.buildsrc.AppConfig
+import dev.yunas.buildsrc.getKey
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ktorfit)
 }
 
 android {
@@ -12,6 +18,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("String", "API_KEY", getKey("API_KEY"))
     }
 
     buildTypes {
@@ -24,12 +32,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = AppConfig.Version.JVM
+        targetCompatibility = AppConfig.Version.JVM
     }
-    kotlinOptions {
-        jvmTarget = "11"
+
+    buildFeatures{
+        buildConfig = true
     }
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+ksp {
+    arg("KOIN_CONFIG_CHECK","true")
 }
 
 dependencies {
@@ -40,4 +57,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.bundles.ktor)
+
+    implementation(libs.koin.core)
+    implementation(projects.domain)
+    implementation(libs.kotlinx.serialization.json)
+    api(libs.koin.core)
+    implementation(libs.napier)
+    implementation(libs.bundles.ktorfit)
 }

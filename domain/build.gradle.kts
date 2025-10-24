@@ -15,6 +15,10 @@ kotlin {
     }
 }
 
+ksp {
+    arg("KOIN_CONFIG_CHECK","true")
+}
+
 dependencies {
     implementation(libs.koin.core)
     api(libs.koin.annotations)
