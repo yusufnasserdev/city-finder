@@ -7,7 +7,7 @@ object AppConfig {
     const val ENABLE_R8_FOR_LIBRARIES: Boolean = false
 
     object Version {
-        const val MIN_SDK = 21
+        const val MIN_SDK = 23
         const val TARGET_SDK = 36
         const val COMPILE_SDK = 36
         val JVM = JavaVersion.VERSION_17
