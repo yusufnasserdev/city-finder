@@ -11,10 +11,10 @@ plugins {
 
 android {
     namespace = "dev.yunas.data"
-    compileSdk = 36
+    compileSdk = AppConfig.Version.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 21
+        minSdk = AppConfig.Version.MIN_SDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -51,18 +51,21 @@ ksp {
 
 dependencies {
 
+    implementation(projects.domain)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.annotations)
+    ksp(libs.koin.ksp.compiler)
+
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.napier)
+    implementation(libs.bundles.ktor)
+    implementation(libs.bundles.ktorfit)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.bundles.ktor)
 
-    implementation(libs.koin.core)
-    implementation(projects.domain)
-    implementation(libs.kotlinx.serialization.json)
-    api(libs.koin.core)
-    implementation(libs.napier)
-    implementation(libs.bundles.ktorfit)
 }

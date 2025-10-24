@@ -21,7 +21,11 @@ class CityRepositoryImpl(
         pageSize: Int
     ): List<City> {
         val response = safeApiCall<PageResponse<CityDto>> {
-            citiesApiService.getCities()
+            citiesApiService.getCities(
+                pageStartIndex = pageNumber * pageSize,
+                pageSize = pageSize,
+                searchPhrase = searchPhrase
+            )
         }
 
         return response.items?.mapAsync { it.toDomain() } ?: emptyList()
