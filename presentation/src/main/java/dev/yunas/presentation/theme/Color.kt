@@ -1,4 +1,4 @@
-package dev.yunas.cityfinder.ui.theme
+package dev.yunas.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
